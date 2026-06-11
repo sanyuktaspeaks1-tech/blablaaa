@@ -216,7 +216,7 @@ sd(boot_b1)          # bootstrap standard error of beta_1_hat
 
 **Bootstrap mean convergence as B → ∞**
 
-Simulates a fixed sample of n = 5 from N(0,1) and tracks the bootstrap double mean X̄*_{n,B} as B increases from 1 to 500, showing convergence to the sample mean X̄_n rather than the population mean μ.
+Simulates a fixed sample of n = 5 from N(0,1) and tracks the bootstrap double mean ${\overline{X}}_{n,B}$ as B increases from 1 to 500, showing convergence to the sample mean X̄_n rather than the population mean μ.
 
 $$\overline{\overline{X}}_{n,B}^* = \frac{1}{B}\sum_{b=1}^{B}\overline{X}_n^{*(b)} \xrightarrow{B\to\infty} \overline{X}_n \xrightarrow{n\to\infty} \mu$$
 
