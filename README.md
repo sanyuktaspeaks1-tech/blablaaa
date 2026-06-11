@@ -93,13 +93,7 @@ abline(v = Normal_CI, col = "red", lwd = 3, lty = 3)
 
 Constructs and overlays the pivotal bootstrap confidence interval using the quantiles of the bootstrap distribution.
 
-$$
-\left(
-2\widehat{\theta} -Q_{1-\alpha/2}^{*},
-\;
-2\widehat{\theta} -Q_{1-\alpha/2}^{*}
-\right)
-$$
+
 ```r
 Pivotal_CI = c(2*theta_hat - quantile(boot_theta_hat, 1-alpha/2), 2*theta_hat - quantile(boot_theta_hat, alpha/2))
 print(Pivotal_CI)
@@ -112,7 +106,6 @@ abline(v = Pivotal_CI, col = "blue", lwd=3, lty = 4)
 
 Constructs and overlays the percentile bootstrap confidence interval directly from the empirical quantiles of the bootstrap distribution, and adds a legend comparing all three methods.
 
-$$\left(Q_{\alpha/2}^*,\;\; Q_{1-\alpha/2}^*\right)$$
 
 ```r
 Percentile_CI = c(quantile(boot_theta_hat, alpha/2), quantile(boot_theta_hat, 1-alpha/2))
