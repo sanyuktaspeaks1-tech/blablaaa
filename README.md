@@ -1,11 +1,18 @@
-# Chapter 14
+# Chapter 14 – Central Limit Theorem and Delta Method Simulations
+
+This repository contains R code that visually demonstrates key asymptotic results from Chapter 14: the Central Limit Theorem (CLT) applied to Poisson sample means, several variants of the Delta method, Wald test statistics, and the multivariate Delta method for a coefficient of variation. Each script simulates sampling distributions, overlays the corresponding normal approximation, and shows how the approximation improves with increasing sample size.
+
 ---
 
-**CLT for Poisson sample mean**
+## 1. CLT for a Poisson Sample Mean
 
-Simulates M = 500 replications of the sample mean from Poisson(λ=3) for n ∈ {2, 3, 5, 10, 15, 25} and overlays the N(λ, λ/n) PDF on each histogram, demonstrating the CLT.
 
-$$\bar{X}_n \sim \mathcal{N}\\left(\lambda,\, \frac{\lambda}{n}\right) \quad \text{for large } n$$
+Simulates **M = 500** replications of the sample mean  ${\overline{X}_n}$ drawn from a $\text{Poisson}(\lambda=3)$ distribution. The sample sizes considered are $n \in \{2, 3, 5, 10, 15, 25\}$. For each $n$, a histogram of the simulated means is plotted and overlaid with the theoretical $\mathcal{N}\bigl(\lambda, \lambda/n\bigr)$ density, illustrating the convergence in distribution stated by the CLT.
+
+$$
+\bar{X}_n \sim \mathcal{N}\left(\lambda, \frac{\lambda}{n}\right) \quad \text{for large } n
+$$
+
 
 ```r
 lambda = 3 # true value of lambda 
@@ -28,11 +35,15 @@ for(n in n_vals){ # loop on sample size
 
 ---
 
-**Delta method – sampling distribution of 1/X̄_n**
+## 2. Delta Method – Sampling Distribution of \(1/\overline{X}_n\)
 
-Simulates the sampling distribution of Y_n = 1/X̄_n for n ∈ {2, 3, 5, 10, 15, 25} and overlays the Delta method normal approximation, showing convergence as n grows.
+This section explores the sampling distribution of the reciprocal of the sample mean, $\overline{Y}_n = 1/\overline{X}_n$, again using $\text{Poisson}(\lambda=3)$ data. For the same sample sizes $n \in \{2,3,5,10,15,25\}$ and 500 replications, the Delta method provides the asymptotic normal approximation
 
-$$Y_n = \frac{1}{\bar{X}_n} \sim \mathcal{N}\!\left(\frac{1}{\lambda},\, \frac{1}{\lambda^3 n}\right) \quad \text{for large } n$$
+$$
+Y_n = \frac{1}{\overline{X}_n} \sim \mathcal{N}\!\left(\frac{1}{\lambda},\; \frac{1}{\lambda^3 n}\right) \quad \text{for large } n.
+$$
+
+The red curve is the approximating normal density, and the blue dot marks the true value $1/\lambda$.
 
 ```r
 lambda = 3 # true value of lambda
@@ -56,11 +67,15 @@ for(n in n_vals){
 
 ---
 
-**Delta method – sampling distribution of ψ(X̄_n)**
+## 3. Delta Method – Sampling Distribution of \(\psi(\bar{X}_n)\)
 
-Simulates the sampling distribution of ψ(X̄_n) = 1 − (1 + X̄_n)e^(−X̄_n) for n ∈ {4, 10, 20, 50, 100, 500} and overlays the Delta method normal approximation, with the true ψ(λ) marked as a red dot.
+Here we apply the Delta method to the function $\psi(\bar{X}_n) = 1 - (1+\bar{X}_n)e^{-\bar{X}_n}$, which estimates $\psi(\lambda) = P(X \ge 1)$ for a Poisson distribution with rate $\lambda=2$. The simulation uses sample sizes $n \in \{4, 10, 20, 50, 100, 500\}$ and 1000 replications each. The asymptotic variance is approximated by
 
-$$\psi(\lambda) = P(X \geq 1) = 1 - (1+\lambda)e^{-\lambda}, \quad \text{Var}(\psi(\bar{X}_n)) \approx \frac{\lambda^3 e^{-2\lambda}}{n}$$
+$$
+\text{Var}(\psi(\bar{X}_n)) \approx \frac{\lambda^3 e^{-2\lambda}}{n}.
+$$
+
+The true parameter $\psi(\lambda)$ is shown as a red dot, while the red curve represents the normal approximation.
 
 ```r
 par(mfrow = c(2,3))
@@ -83,11 +98,14 @@ for(n in n_vals){
 
 ---
 
-**CLT and Delta method – Wald test statistics W_λ and W_ψ**
+## 4. CLT and Delta Method – Wald Test Statistics \(W_\lambda\) and \(W_\psi\)
 
-For n ∈ {5, 10, 25} and λ = 4, simulates 1000 replications of the Wald statistics W_λ (based on CLT) and W_ψ (based on Delta method for ψ = λ²) and overlays N(0,1) on each histogram, confirming approximate standard normality for large n.
+To verify that Wald statistics follow an approximate standard normal distribution under the null, we simulate 1000 replications for sample sizes \(n \in \{5, 10, 25\}\) and true parameter \(\lambda=4\). Two Wald statistics are constructed:
 
-$$W_\lambda = \frac{\bar{X}_n - \lambda_0}{\widehat{\text{SE}}(\bar{X}_n)} \xrightarrow{d} \mathcal{N}(0,1), \quad W_\psi = \frac{\hat{\psi}_n - \psi_0}{\widehat{\text{SE}}(\hat{\psi}_n)} \xrightarrow{d} \mathcal{N}(0,1), \quad \widehat{\text{SE}}(\hat{\psi}_n) = 2\sqrt{\frac{\bar{X}_n^3}{n}}$$
+- \(W_\lambda = \frac{\bar{X}_n - \lambda_0}{\widehat{\text{SE}}(\bar{X}_n)}\) using the CLT,
+- \(W_\psi = \frac{\hat{\psi}_n - \psi_0}{\widehat{\text{SE}}(\hat{\psi}_n)}\) with \(\psi = \lambda^2\) using the Delta method, where \(\widehat{\text{SE}}(\hat{\psi}_n) = 2\sqrt{\bar{X}_n^3/n}\).
+
+Histograms of both statistics are overlaid with the \(\mathcal{N}(0,1)\) density.
 
 ```r
 par(mfrow = c(2,3))
@@ -129,11 +147,20 @@ for(n in n_vals){
 
 ---
 
-**Multivariate Delta method – sampling distribution of the coefficient of variation**
+## 5. Multivariate Delta Method – Sampling Distribution of the Coefficient of Variation
 
-Simulates the sampling distribution of CV = S_n/ $\overline{X}_n$ from N(μ=3, σ²=4) for n ∈ {5, 10, 20, 50, 100, 250} and overlays the Delta method normal approximation on each histogram.
+The coefficient of variation \(\text{CV} = S_n / \bar{X}_n\) is estimated from i.i.d. \(\mathcal{N}(\mu=3, \sigma^2=4)\) data. For sample sizes \(n \in \{5, 10, 20, 50, 100, 250\}\) and 1000 replications, the multivariate Delta method yields the approximate variance
 
-$$\text{Var}\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx \frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}), \quad \text{Var}(\hat{\sigma}) = \sigma^2\!\left[1 - \left(\sqrt{\frac{2}{n-1}}\cdot\frac{\Gamma(n/2)}{\Gamma((n-1)/2)}\right)^2\right]$$
+\[
+\text{Var}\!\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx 
+\frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}),
+\]
+where
+\[
+\text{Var}(\hat{\sigma}) = \sigma^2\!\left[1 - \left(\sqrt{\frac{2}{n-1}}\cdot\frac{\Gamma(n/2)}{\Gamma((n-1)/2)}\right)^2\right].
+\]
+
+The normal approximation (red curve) is superimposed on the histogram of the simulated CV values.
 
 ```r
 n_vals = c(5,10,20,50,100,250) # sample size
