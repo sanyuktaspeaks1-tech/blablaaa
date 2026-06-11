@@ -35,7 +35,7 @@ for(n in n_vals){ # loop on sample size
 
 ---
 
-## 2. Delta Method – Sampling Distribution of \(1/\overline{X}_n\)
+## 2. Delta Method – Sampling Distribution of $\(1/\overline{X}_n\)$
 
 This section explores the sampling distribution of the reciprocal of the sample mean, $\overline{Y}_n = 1/\overline{X}_n$, again using $\text{Poisson}(\lambda=3)$ data. For the same sample sizes $n \in \{2,3,5,10,15,25\}$ and 500 replications, the Delta method provides the asymptotic normal approximation
 
@@ -148,16 +148,15 @@ for(n in n_vals){
 
 ## 5. Multivariate Delta Method – Sampling Distribution of the Coefficient of Variation
 
-The coefficient of variation \(\text{CV} = S_n / \bar{X}_n\) is estimated from i.i.d. \(\mathcal{N}(\mu=3, \sigma^2=4)\) data. For sample sizes \(n \in \{5, 10, 20, 50, 100, 250\}\) and 1000 replications, the multivariate Delta method yields the approximate variance
+The coefficient of variation $\text{CV} = S_n / \bar{X}_n$ is estimated from i.i.d. $\mathcal{N}(\mu=3, \sigma^2=4)$ data. For sample sizes $n \in \{5, 10, 20, 50, 100, 250\}$ and 1000 replications, the multivariate Delta method yields the approximate variance
 
-\[
-\text{Var}\!\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx 
-\frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}),
-\]
+$$
+\text{Var}\!\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx \frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}),
+$$
 where
-\[
-\text{Var}(\hat{\sigma}) = \sigma^2\!\left[1 - \left(\sqrt{\frac{2}{n-1}}\cdot\frac{\Gamma(n/2)}{\Gamma((n-1)/2)}\right)^2\right].
-\]
+$$
+\text{Var}(\hat{\sigma}) = \sigma^2\left[1 - \left(\sqrt{\frac{2}{n-1}}\cdot\frac{\Gamma(n/2)}{\Gamma((n-1)/2)}\right)^2\right].
+$$
 
 The normal approximation (red curve) is superimposed on the histogram of the simulated CV values.
 
