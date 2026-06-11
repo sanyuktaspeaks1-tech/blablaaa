@@ -156,7 +156,7 @@ abline(lm(y ~ x, data = data), col = "blue", lwd = 2)
 
 ---
 
-**Bootstrap regression – step (c): sampling distributions of β̂₀ and β̂₁**
+**Bootstrap regression – step (c): sampling distributions of $\widehat{\beta}_0$ and $\widehat{\beta}_1$**
 
 Plots histograms of the B = 100 bootstrap estimates of β₀ and β₁ and overlays a normal curve with bootstrap mean and standard error on each, confirming that both distributions are well approximated by the normal distribution.
 
@@ -180,9 +180,9 @@ sd(beta_1)               # bootstrap standard error of beta_1_hat
 
 **Parametric bootstrap for simple linear regression**
 
-Fits the regression model on the original data, then generates B = 100 parametric bootstrap datasets by simulating new responses from N(Ŷᵢ, σ̂²), refits the model on each, and plots the bootstrap sampling distributions of β̂₀ and β̂₁ with normal overlays.
+Fits the regression model on the original data, then generates B = 100 parametric bootstrap datasets by simulating new responses from N(Ŷᵢ, σ̂²), refits the model on each, and plots the bootstrap sampling distributions of $\widehat{\beta}_0$ and $\widehat{\beta}_1$ with normal overlays.
 
-$$Y_i^* \sim \mathcal{N}\!\left(\widehat{\beta}_0 + \widehat{\beta}_1 X_i,\; \widehat{\sigma}^2\right), \quad 1 \leq i \leq n$$
+$$Y_i^* \sim \mathcal{N}\left(\widehat{\beta}_0 + \widehat{\beta}_1 X_i,\; \widehat{\sigma}^2\right), \quad 1 \leq i \leq n$$
 
 ```r
 fit = lm(y ~ x, data = data)      # linear regression fit
