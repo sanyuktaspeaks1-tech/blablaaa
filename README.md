@@ -40,7 +40,7 @@ for(n in n_vals){ # loop on sample size
 This section explores the sampling distribution of the reciprocal of the sample mean, $\overline{Y}_n = 1/\overline{X}_n$, again using $\text{Poisson}(\lambda=3)$ data. For the same sample sizes $n \in \{2,3,5,10,15,25\}$ and 500 replications, the Delta method provides the asymptotic normal approximation
 
 $$
-Y_n = \frac{1}{\overline{X}_n} \sim \mathcal{N}\!\left(\frac{1}{\lambda}, \frac{1}{\lambda^3 n}\right) \quad \text{for large } n.
+Y_n = \frac{1}{\overline{X}_n} \sim \mathcal{N}\\left(\frac{1}{\lambda}, \frac{1}{\lambda^3 n}\right) \quad \text{for large } n.
 $$
 
 The red curve is the approximating normal density, and the blue dot marks the true value $1/\lambda$.
@@ -151,7 +151,7 @@ for(n in n_vals){
 The coefficient of variation $\text{CV} = S_n / \bar{X}_n$ is estimated from i.i.d. $\mathcal{N}(\mu=3, \sigma^2=4)$ data. For sample sizes $n \in \{5, 10, 20, 50, 100, 250\}$ and 1000 replications, the multivariate Delta method yields the approximate variance
 
 $$
-\text{Var}\!\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx \frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}),
+\text{Var}\\left(\frac{\hat{\sigma}}{\hat{\mu}}\right) \approx \frac{\sigma^4}{\mu^4} \cdot \frac{\sigma^2}{n} + \frac{1}{\mu^2}\,\text{Var}(\hat{\sigma}),
 $$
 where
 $$
