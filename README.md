@@ -67,7 +67,7 @@ for(n in n_vals){
 
 ---
 
-## 3. Delta Method – Sampling Distribution of \(\psi(\bar{X}_n)\)
+## 3. Delta Method – Sampling Distribution of $\(\psi(\bar{X}_n)\)$
 
 Here we apply the Delta method to the function $\psi(\bar{X}_n) = 1 - (1+\bar{X}_n)e^{-\bar{X}_n}$, which estimates $\psi(\lambda) = P(X \ge 1)$ for a Poisson distribution with rate $\lambda=2$. The simulation uses sample sizes $n \in \{4, 10, 20, 50, 100, 500\}$ and 1000 replications each. The asymptotic variance is approximated by
 
@@ -98,14 +98,13 @@ for(n in n_vals){
 
 ---
 
-## 4. CLT and Delta Method – Wald Test Statistics \(W_\lambda\) and \(W_\psi\)
+## 4. CLT and Delta Method – Wald Test Statistics $\(W_\lambda\)$ and $\(W_\psi\)$
 
-To verify that Wald statistics follow an approximate standard normal distribution under the null, we simulate 1000 replications for sample sizes \(n \in \{5, 10, 25\}\) and true parameter \(\lambda=4\). Two Wald statistics are constructed:
+To verify that Wald statistics follow an approximate standard normal distribution under the null, we simulate 1000 replications for sample sizes $n \in \{5, 10, 25\}$ and true parameter $\lambda=4$. Two Wald statistics are constructed:
 
-- \(W_\lambda = \frac{\bar{X}_n - \lambda_0}{\widehat{\text{SE}}(\bar{X}_n)}\) using the CLT,
-- \(W_\psi = \frac{\hat{\psi}_n - \psi_0}{\widehat{\text{SE}}(\hat{\psi}_n)}\) with \(\psi = \lambda^2\) using the Delta method, where \(\widehat{\text{SE}}(\hat{\psi}_n) = 2\sqrt{\bar{X}_n^3/n}\).
-
-Histograms of both statistics are overlaid with the \(\mathcal{N}(0,1)\) density.
+- $W_\lambda = \frac{\bar{X}_n - \lambda_0}{\widehat{\text{SE}}(\bar{X}_n)}$ using the CLT,
+- $W_\psi = \frac{\hat{\psi}_n - \psi_0}{\widehat{\text{SE}}(\hat{\psi}_n)}$ with $\psi = \lambda^2$ using the Delta method, where $\widehat{\text{SE}}(\hat{\psi}_n) = 2\sqrt{\bar{X}_n^3/n}$.
+Histograms of both statistics are overlaid with the $\(\mathcal{N}(0,1)\)$ density.
 
 ```r
 par(mfrow = c(2,3))
