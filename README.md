@@ -40,7 +40,7 @@ for(n in n_vals){ # loop on sample size
 This section explores the sampling distribution of the reciprocal of the sample mean, $\overline{Y}_n = 1/\overline{X}_n$, again using $\text{Poisson}(\lambda=3)$ data. For the same sample sizes $n \in \{2,3,5,10,15,25\}$ and 500 replications, the Delta method provides the asymptotic normal approximation
 
 $$
-Y_n = \frac{1}{\overline{X}_n} \sim \mathcal{N}\!\left(\frac{1}{\lambda},\; \frac{1}{\lambda^3 n}\right) \quad \text{for large } n.
+Y_n = \frac{1}{\overline{X}_n} \sim \mathcal{N}\!\left(\frac{1}{\lambda}, \frac{1}{\lambda^3 n}\right) \quad \text{for large } n.
 $$
 
 The red curve is the approximating normal density, and the blue dot marks the true value $1/\lambda$.
